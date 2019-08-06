@@ -11,5 +11,7 @@ app.use(express.json());
 app.use(passport.initialize());
 connectToPassport(passport);
 
+app.use('/api/users', require('./routes/users'));
+
 app.listen(port, () => console.log(`Connected to server on port ${port}`));
 connectToMongoDB();
