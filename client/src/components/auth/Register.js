@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import AuthContext from '../state/auth/context';
+import AuthContext from '../../state/auth/context';
 
 const Register = ({ history }) => {
   const { authenticated, errors, register, setError } = useContext(AuthContext);
