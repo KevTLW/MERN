@@ -39,7 +39,7 @@ const Login = ({ history }) => {
   return (
     <form onSubmit={handleSubmit}>
       {errors && errors.map(err => (
-        <p>{err}</p>
+        <p key={err}>{err}</p>
       ))}
       <div>
         <label htmlFor='username'>username: </label>

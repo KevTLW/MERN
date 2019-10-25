@@ -90,7 +90,9 @@ const AuthState = ({ children }) => {
   }
 
   useEffect(() => {
-    load();
+    if (localStorage.getItem('auth-token')) {
+      load();
+    }
 
     // eslint-disable-next-line
   }, []);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch} from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import AuthState from './state/auth/AuthState';
 import PrivateRoute from './components/routing/PrivateRoute';
 import NotFound from './components/routing/NotFound';
