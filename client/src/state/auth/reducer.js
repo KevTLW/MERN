@@ -1,6 +1,13 @@
 import { ERROR, LOAD, LOGOUT, SUCCESS } from './types';
 
-export default (state, { payload, type }) => {
+const initialState = {
+  authenticated: false,
+  errors: undefined,
+  loading: true,
+  user: undefined
+};
+
+export default (state = initialState, { payload, type }) => {
   switch (type) {
     case ERROR:
     case LOGOUT:

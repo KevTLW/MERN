@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import AuthContext from '../../state/auth/context';
+import { useSelector } from 'react-redux';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  const { authenticated } = useContext(AuthContext);
+  const { authenticated } = useSelector(state => state.auth);
 
   return (
     <Route

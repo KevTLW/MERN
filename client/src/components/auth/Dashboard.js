@@ -1,27 +1,21 @@
-import React, { useContext, useEffect } from 'react';
-import AuthContext from '../../state/auth/context';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../state/auth/actions';
 
-const Dashboard = ({ history }) => {
-  const { authenticated, loading, logout, user } = useContext(AuthContext);
-
-  useEffect(() => {
-    if (!authenticated) {
-      history.push('/login')
-    }
-    
-    // eslint-disable-next-line
-  }, [authenticated, user]);
+const Dashboard = () => {
+  const dispatch = useDispatch();
+  const { loading, user } = useSelector(state => state.auth);
 
   return (
     <>
       {!loading && (
         <>
           <h1>Hi {user && user.username}</h1>
-          <button onClick={logout}>Logout</button>
+          <button onClick={() => dispatch(logout())}>Logout</button>
         </>
       )}
     </>
   );
 }
 
-export default Dashboard
+export default Dashboard;

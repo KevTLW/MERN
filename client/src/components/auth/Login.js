@@ -1,8 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
-import AuthContext from '../../state/auth/context';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { login, setError } from '../../state/auth/actions';
 
 const Login = ({ history }) => {
-  const { authenticated, errors, login, setError } = useContext(AuthContext);
+  const dispatch = useDispatch();
+  const { authenticated, errors } = useSelector(state => state.auth);
 
   const [data, setData] = useState({
     password: '',
@@ -20,9 +22,9 @@ const Login = ({ history }) => {
     e.preventDefault();
 
     if (!password || !username) {
-      setError([ 'All fields are required' ]);
+      dispatch(setError([ 'All fields are required' ]));
     } else {
-      login(data);
+      dispatch(login(data));
     }
   }
 
@@ -30,7 +32,7 @@ const Login = ({ history }) => {
     if (authenticated) {
       history.push('/');
     }
-
+    
     // eslint-disable-next-line
   }, [authenticated]);
 
@@ -39,7 +41,7 @@ const Login = ({ history }) => {
   return (
     <form onSubmit={handleSubmit}>
       {errors && errors.map(err => (
-        <p>{err}</p>
+        <p key={err}>{err}</p>
       ))}
       <div>
         <label htmlFor='username'>username: </label>
