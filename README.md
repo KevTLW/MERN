@@ -38,3 +38,11 @@ To start the server and the client simultaneously, run:
 ```zsh
 npm run dev
 ```
+
+## Prefer Redux?
+
+In order to use Redux for state management instead of the React Context API, switch to the `redux` branch by running:
+
+```zsh
+git checkout redux
+```
